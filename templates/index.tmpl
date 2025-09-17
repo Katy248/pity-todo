@@ -1,0 +1,44 @@
+<html>
+<head>
+    <title>My Website</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <main class="container mx-auto px-4 max-w-[700px]">
+        <a href="/">
+            <h1 class="text-4xl font-bold mb-4">TASKS:</h1>
+        </a>
+        <div class="mb-10">
+            <q class="italic">Computing helps extermination, there must be something we can do about it</q>
+        </div>
+        <div class="mb-10 flex justify-evenly">
+            <a class="hover:underline" href="/">All tasks</a>
+            <a class="hover:underline" href="/uncompleted">Uncompleted</a>
+            <a class="hover:underline" href="/completed">Completed</a>
+        </div>
+        <div class="flex flex-col gap-4">
+            {{range .Tasks}}
+            <div class="flex justify-between">
+                <div class="text-xl {{if .Completed}}line-through{{end}} ">
+                    {{ .Description}}
+                </div>
+                <div class="flex gap-2">
+                    <form method="post" action="/complete/{{.ID}}">
+                        <button class="py-2 px-4 bg-blue-400 text-white" type="submit">Complete</button>
+                    </form>
+                    <form method="post" action="/delete/{{.ID}}">
+                        <button class="py-2 px-4 bg-red-500" type="submit">Delete</button>
+                    </form>
+                </div>
+            </div>
+            {{end}}
+        </div>
+        <div>
+            <form method="post" action="/add">
+                <input class="py-2 px-4" type="text" name="description" placeholder="Add a task">
+                <button class="py-2 px-4 bg-blue-400 text-white" type="submit">Add</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
