@@ -1,1 +1,1 @@
-[{"ID":1,"Description":"Убить всех человеков","Completed":true},{"ID":2,"Description":"Reset","Completed":false},{"ID":3,"Description":"Repeat","Completed":false}]
+[{"id":1,"name":"Task 1","completed":false},{"id":2,"name":"Task 2","completed":true}]
